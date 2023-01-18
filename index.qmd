@@ -1,0 +1,330 @@
+---
+title: "Pengaruh Jumlah Penduduk Miskin terhadap Angka Partisipasi Murni umur 16-19 tahun Pendidikan Indonesia tahun 2012 di Jawa Barat, Jawa Tengah, dan Jawa Timur"
+subtitle: "Metode Penelitian Politeknik APP Jakarta"
+author: "Raja Shafa Pratama Bintang"
+date: 2023-01-18
+number-sections: true
+format:
+  html: default
+  docx: default
+editor: visual
+---
+
+## Pendahuluan
+
+### Latar belakang
+
+Pendidikan merupakan suatu aspek yang sangat penting untuk memajukan negara, namun untuk mendapatkan Pendidikan tersebut pastinya butuh biaya untuk mencukupi kebutuhan Pendidikan itu sendiri. Oleh karena itu, biaya sangat menjadi dinding yang cukup besar bagi masyarakat miskin untuk mendapatkan Pendidikan. Dan penelitian ini membahas terhadap pengaruhnya jumlah kemiskinan penduduk terhadap angka partisipasi sekolah di Jawa Barat, Jawa Tengah, dan juga Jawa Timur.
+
+Metode identifikasi masalah ini menggunakan metode fishbone diagram untuk mengidentifikasi permasalahan topik ini. Berikut tabel fishbone topik ini
+
+![fishbone](fishbone.png){width="338"}
+
+### Ruang lingkup
+
+Lingkup bahasan permasalahan ini berupa tingkat jumlah kemiskinan serta Upah pekerjaan yang berpengaruh pada Angka Partisipasi Sekolah sahaja, lingkup ini terbatas karena tidak tersedianya beberapa variabel yang dapat disinggung.
+
+
+### Rumusan masalah
+
+1.     Apakah adanya pengaruh Jumlah Kemiskinan Penduduk terhadap Angka Partisipasi Murni?
+
+2.     Apakah Jumlah Kemiskinan Penduduk berpengaruh besar terhadap Angka Partisipasi Murni?
+
+3.     Apakah upah pekerjaan berpengaruh terhadap Angka Partisipasi Murni di Indonesia?
+
+### Tujuan dan manfaat penelitian
+
+Tujuan penelitian ini untuk mengetahui pengaruhnya Jumlah Penduduk Miskin di daerah dan tahun terkait terhadap Angka Partisipasi Sekolah di daerah dan tahun terkait .
+
+Manfaat penelitian ini agar masyarakat mengerti bahwa adanya pengaruh Jumlah Penduduk Miskin terhadap Angka Partisipasi Sekolah di daerah terkait.
+
+### Package
+
+Ini tidak wajib ada di packages yang digunakan antara lain sebagai berikut:
+
+```{r}
+#| warning: false
+#| echo: true
+library("tidyverse")
+library("readxl")
+library("writexl")
+library("dplyr")
+```
+
+## Studi pustaka
+
+Menurut Kuncoro (1997) mengenai teori kemiskinan akan keterbelakangan, ketidaksempurnaan pasar, dan kurang nya dana awal dapat mengakibatkan rendahnya produktivitas manusia. Rendahnya pendapatan mengakibatkan rendahnya tabungan dan juga investasi yang berpengaruh akan daya mereka untuk mendapatkan Pendidikan.
+
+## Metode penelitian
+
+### Data
+
+Data yang saya gunakan berupa Angka Partisipasi Sekolah pada umur dan daerah terkait
+
+| provinsi         | aps   |
+|------------------|-------|
+| Bogor            | 53,91 |
+| Sukabumi         | 51,97 |
+| Cianjur          | 46,73 |
+| Bandung          | 49,76 |
+| Garut            | 51,69 |
+| Tasikmalaya      | 55,66 |
+| Ciamis           | 63,53 |
+| Kuningan         | 55,53 |
+| Cirebon          | 56,07 |
+| Majalengka       | 52,93 |
+| Sumedang         | 60,94 |
+| Indramayu        | 54,81 |
+| Subang           | 50,85 |
+| Purwakarta       | 59,48 |
+| Karawang         | 56,17 |
+| Bekasi           | 55,51 |
+| Bandung Barat    | 42,95 |
+| Kota Bogor       | 65,54 |
+| Kota Sukabumi    | 61,66 |
+| Kota Bandung     | 71,02 |
+| Kota Cirebon     | 61,71 |
+| Kota Bekasi      | 62,42 |
+| Kota Depok       | 66,55 |
+| Kota Cimahi      | 76,35 |
+| Kota Tasikmalaya | 67,56 |
+| Kota Banjar      | 66,38 |
+| Cilacap          | 73,46 |
+| Banyumas         | 61,3  |
+| Purbalingga      | 41,8  |
+| Banjarnegara     | 47,05 |
+| Kebumen          | 69,63 |
+| Purworejo        | 65,33 |
+| Wonosobo         | 37,42 |
+| Magelang         | 54,13 |
+| Boyolali         | 63,39 |
+| Klaten           | 77,77 |
+| Sukoharjo        | 73,62 |
+| Wonogiri         | 62,55 |
+| Karanganyar      | 68,35 |
+| Sragen           | 74,73 |
+| Grobogan         | 52,04 |
+| Blora            | 64,15 |
+| Rembang          | 60,6  |
+| Pati             | 51,29 |
+| Kudus            | 55,38 |
+| Jepara           | 54,67 |
+| Demak            | 60,38 |
+| Semarang         | 56,1  |
+| Temanggung       | 47,09 |
+| Kendal           | 63,14 |
+| Batang           | 38,83 |
+| Pekalongan       | 46,35 |
+| Pemalang         | 50,93 |
+| Tegal            | 60,34 |
+| Brebes           | 54,88 |
+| Kota Magelang    | 78,23 |
+| Kota Surakarta   | 69,42 |
+| Kota Salatiga    | 84,25 |
+| Kota Semarang    | 75,33 |
+| Kota Pekalongan  | 49,45 |
+| Kota Tegal       | 64,23 |
+| Pacitan          | 61,05 |
+| Ponorogo         | 73,77 |
+| Trenggalek       | 64,14 |
+| Tulungagung      | 53,72 |
+| Blitar           | 63,83 |
+| Kediri           | 65,86 |
+| Malang           | 49,48 |
+| Lumajang         | 57,57 |
+| Jember           | 50,03 |
+| Banyuwangi       | 58,98 |
+| Bondowoso        | 61,21 |
+| Situbondo        | 47,59 |
+| Probolinggo      | 47,42 |
+| Pasuruan         | 47,84 |
+| Sidoarjo         | 78,73 |
+| Mojokerto        | 64,17 |
+| Jombang          | 68,5  |
+| Nganjuk          | 68,85 |
+| Madiun           | 79,14 |
+| Magetan          | 77,78 |
+| Ngawi            | 80,35 |
+| Bojonegoro       | 51,41 |
+| Tuban            | 67,64 |
+| Lamongan         | 67,65 |
+| Gresik           | 70,81 |
+| Bangkalan        | 42,86 |
+| Sampang          | 38,61 |
+| Pamekasan        | 62,07 |
+| Sumenep          | 65,71 |
+| Kota Kediri      | 73,36 |
+| Kota Blitar      | 70,52 |
+| Kota Malang      | 74,15 |
+| Kota Probolinggo | 68,51 |
+| Kota Pasuruan    | 80,08 |
+| Kota Mojokerto   | 82,07 |
+| Kota Madiun      | 80,15 |
+| Kota Surabaya    | 69,68 |
+| Kota Batu        | 71,97 |
+
+: dan juga Data Jumlah Penduduk Miskin di daerah yang terkait
+
+| provinsi         | jpm   |
+|------------------|-------|
+| Bogor            | 451   |
+| Sukabumi         | 234,6 |
+| Cianjur          | 292,2 |
+| Bandung          | 279,5 |
+| Garut            | 315,8 |
+| Tasikmalaya      | 201,5 |
+| Ciamis           | 147,8 |
+| Kuningan         | 142,3 |
+| Cirebon          | 311,3 |
+| Majalengka       | 168,6 |
+| Sumedang         | 132,9 |
+| Indramayu        | 257,3 |
+| Subang           | 185,4 |
+| Purwakarta       | 85    |
+| Karawang         | 245,1 |
+| Bekasi           | 153,1 |
+| Bandung Barat    | 209,9 |
+| Kota Bogor       | 84,8  |
+| Kota Sukabumi    | 26    |
+| Kota Bandung     | 111,4 |
+| Kota Cirebon     | 33,2  |
+| Kota Bekasi      | 139,8 |
+| Kota Depok       | 47    |
+| Kota Cimahi      | 37,7  |
+| Kota Tasikmalaya | 123   |
+| Kota Banjar      | 13,9  |
+| Cilacap          | 260,9 |
+| Banyumas         | 303,9 |
+| Purbalingga      | 181,3 |
+| Banjarnegara     | 164   |
+| Kebumen          | 258,5 |
+| Purworejo        | 112,8 |
+| Wonosobo         | 169,3 |
+| Magelang         | 166,2 |
+| Boyolali         | 129,1 |
+| Klaten           | 187,9 |
+| Sukoharjo        | 85,1  |
+| Wonogiri         | 135,4 |
+| Karanganyar      | 115,2 |
+| Sragen           | 142,8 |
+| Grobogan         | 210,8 |
+| Blora            | 124,8 |
+| Rembang          | 129,9 |
+| Pati             | 162   |
+| Kudus            | 68,1  |
+| Jepara           | 104,8 |
+| Demak            | 178,1 |
+| Semarang         | 88,8  |
+| Temanggung       | 87,8  |
+| Kendal           | 119   |
+| Batang           | 88,2  |
+| Pekalongan       | 116,5 |
+| Pemalang         | 241,7 |
+| Tegal            | 149   |
+| Brebes           | 364,9 |
+| Kota Magelang    | 12,1  |
+| Kota Surakarta   | 59,7  |
+| Kota Salatiga    | 12,3  |
+| Kota Semarang    | 81,9  |
+| Kota Pekalongan  | 26,8  |
+| Kota Tegal       | 24    |
+| Pacitan          | 94,5  |
+| Ponorogo         | 101,4 |
+| Trenggalek       | 96,9  |
+| Tulungagung      | 94,6  |
+| Blitar           | 121,6 |
+| Kediri           | 209   |
+| Malang           | 275,5 |
+| Lumajang         | 126,4 |
+| Jember           | 280   |
+| Banyuwangi       | 157,2 |
+| Bondowoso        | 118,5 |
+| Situbondo        | 94,5  |
+| Probolinggo      | 248,5 |
+| Pasuruan         | 179,1 |
+| Sidoarjo         | 130,5 |
+| Mojokerto        | 112,7 |
+| Jombang          | 149,6 |
+| Nganjuk          | 136,1 |
+| Madiun           | 91,8  |
+| Magetan          | 71,8  |
+| Ngawi            | 131,7 |
+| Bojonegoro       | 203,9 |
+| Tuban            | 202,7 |
+| Lamongan         | 197,9 |
+| Gresik           | 174,4 |
+| Bangkalan        | 229,8 |
+| Sampang          | 253,4 |
+| Pamekasan        | 160,8 |
+| Sumenep          | 232,2 |
+| Kota Kediri      | 22,3  |
+| Kota Blitar      | 9,1   |
+| Kota Malang      | 43,5  |
+| Kota Probolinggo | 24,3  |
+| Kota Pasuruan    | 15,1  |
+| Kota Mojokerto   | 8     |
+| Kota Madiun      | 9,3   |
+| Kota Surabaya    | 175,7 |
+| Kota Batu        | 8,7   |
+
+![logo bps](logobps.png)
+
+Penelitian ini menggunakan data Angka Partisipasi Sekolah dan Jumlah Penduduk Miskin dari Badan Pusat Statistik(BPS)
+
+Baca data
+
+```{r}
+#import dataset
+library(readxl)
+dat<-read_excel('JAWA.xlsx')
+head(dat)
+```
+
+```{r scatterplot, echo=TRUE, message=FALSE, warning=FALSE, comment="", tidy=TRUE}
+library("ggplot2")
+library("readxl")
+library("dplyr")
+ggplot(data=dat,aes(x=aps,y=jps))+
+  geom_point()
+```
+
+### Metode analisis
+
+Metode yang dipilih adalah regresi univariat atau Ordinary Least Square (OLS) dengan 1 variabel independen. Penelitian ini merbaksud mencari hubungan antara JUMLAH PENDUDUK MISKIN (JPM) dan ANGKA PARTISIPASI SEKOLAH (APS). Spesifikasi yang dilakukan adalah:
+
+$$
+y_{t}=\beta_0 + \beta_1 x_t+\mu_t
+$$ di mana $y_t$ adalah APS dan $x_t$ adalah JPM.
+
+## Pembahasan
+
+### Pembahasan masalah
+
+Dikarenakan saya menggunakan OLS, Pembahasan saya disini hanya menghubungkan Angka Partisipasi Sekolah dan Jumlah Penduduk Miskin Data tersebut saya satukan untuk saya regresi dan tampilannya seperti ini.
+
+```{r}
+#import dataset
+library(readxl)
+dat<-read_excel('JAWA.xlsx')
+head(dat)
+```
+
+Koreksi: jps ini maksudnya Jumlah Penduduk Miskin ya :3
+
+### Analisis masalah
+
+Hasil regresinya adalah
+
+```{r}
+reg1<-lm(aps~jps,data=dat)
+summary(reg1)
+```
+
+## Kesimpulan
+
+Dari hasil regresi dapat dilihat bahwa setiap meningkat 100 orang Jumlah Penduduk Miskin di Jawa Barat, Jawa Tengah, dan Jawa Timur, maka Angka Partisipasi Sekolah pada daerah tersebut angkat menurun sebesar 5,969 persen. Dari hasil regresi tersebut dapat disimpulkan bahwa Jumlah Penduduk Miskin berpengaruh terhadap tingkat Angka Partisipasi Sekolah di Jawa Barat, Jawa Tengah, dan Jawa Timur pada tahun 2012.
+
+## Referensi
+
+Kuncoro, M. (1997). Ekonomi Pembangunan: Teori, masalah dan kebijakan. UPP STIM YKPN. https://www.worldcat.org/title/ekonomi-pembangunan-teori-masalah-dan-kebijakan/oclc/606545951#goodreads
